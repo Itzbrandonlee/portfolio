@@ -112,7 +112,7 @@
         
         <v-col md="3" offset-md="3">
           <v-card class="pa-2 py-12" outlined tile height="300px" color="#181818">
-            <!-- <v-img src="" contain > </v-img>-->
+            <v-img src="..\src\assets\image2.png" contain > </v-img>
           </v-card>
         </v-col>
         
@@ -156,7 +156,7 @@
         </v-col>
         <v-col md="3">
           <v-card class="pa-2 py-12" outlined tile height="300px" color="#181818">
-            <!-- <v-img src="" contain > </v-img>-->
+            <v-img src="..\src\assets\image.png" contain> </v-img>
           </v-card>
         </v-col>
 
