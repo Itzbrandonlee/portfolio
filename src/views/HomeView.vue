@@ -1,8 +1,10 @@
 <template>
+  
   <v-app id="home" :style="{ background: $vuetify.theme.themes.dark.background }">
     <NavBar />
     <v-container fluid>
       <v-row>
+        <div id="header">
         <v-col cols="6">
           <h1 class="jobTitle">
             {Full-Stack</h1> <br />
@@ -13,7 +15,8 @@
             video games || technology || graphic design || photography
           </p>
         </v-col>
-        <v-col cols="12" class="padd">
+      </div>
+        <v-col id="aboutme" cols="12" class="padd">
           <div class="first" id="about">
             <v-row>
               <v-col cols="12">
@@ -102,21 +105,23 @@
             </v-row>
           </div>
         </v-col>
-        <v-col md="3" offset-md="3" id="projects">
-          <h4 class="white--text">FEATURES PROJECTS</h4>
-        </v-col>
-        <v-col md="3" class="text-end">
-          <v-btn tile color="#48E5C2" dark href="https://github.com/Itzbrandonlee">View GitHub</v-btn>
-        </v-col>
 
         
-        <v-col md="3" offset-md="3">
-          <v-card class="pa-2 py-12" outlined tile height="300px" color="#181818">
+        <v-col md="3" offset-md="3" id="titlefeatured">
+          <h4 class="white--text">FEATURES PROJECTS</h4>
+        </v-col>
+        <v-col md="3" class="text-end" id="github">
+          <v-btn tile color="#48E5C2" dark href="https://github.com/Itzbrandonlee">View GitHub</v-btn>
+        </v-col>
+      
+        
+        <v-col md="3" offset-md="3" id="fitnessimg">
+          <v-card class="pa-2 py-12" outlined tile height="20rem" color="#181818">
             <v-img src="./image2.png" contain > </v-img>
           </v-card>
         </v-col>
         
-        <v-col md="3">
+        <v-col md="3" id="fitnessdesc">
           <v-btn color="white" dark text class="ml-n4">
             Fitness Tracking Application
           </v-btn><br />
@@ -134,7 +139,7 @@
           </v-btn>
         </v-col>
         
-        <v-col md="3" offset-md="3">
+        <v-col md="3" offset-md="3" id="comicdesc">
           <v-btn color="white" dark text class="ml-n4">
             Comic Collection Application
 
@@ -154,14 +159,16 @@
             <v-icon right>mdi-arrow-right</v-icon>
           </v-btn>
         </v-col>
-        <v-col md="3">
-          <v-card class="pa-2 py-12" outlined tile height="300px" color="#181818">
+        <v-col md="3" id="comicimg">
+          <v-card class="pa-2 py-12" outlined tile height="20rem" color="#181818">
             <v-img src="./image.png" contain> </v-img>
           </v-card>
         </v-col>
+        
+        
 
 
-        <v-col cols="12" class="padd topInverse">
+        <v-col id="contactme" cols="12" class="padd topInverse">
           <div class="second">
           <div class="secondchild1" id="contact">
                 <h1 class="white--text">
@@ -186,7 +193,7 @@
         </v-col>
       </v-row>
     </v-container>
-    <FooterBar />
+    <FooterBar id="footer" />
   </v-app>
   
 </template>
@@ -194,6 +201,7 @@
 <script>
   import NavBar from '../components/NavBar'
   import FooterBar from '../components/FooterBar'
+  
 
   export default {
     name: 'HomeView',
@@ -201,6 +209,7 @@
     components: {
       NavBar,
       FooterBar,
+      
     },
     methods: {
         scroll(refName) {
@@ -212,13 +221,123 @@
 </script>
 
 <style scoped>
+
+#home {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 20px;
+  grid-template-areas: 
+    "header header header header header header"
+    ". about about about about about ."
+    ". featured . . github ."
+    ". fitimg fitimg fitdesc fitdesc ."
+    ". comdesc comdesc comimg comimg ."
+    ". . contact contact . . "
+    "footer footer footer footer footer footer";
+}
+@media only screen and (max-width: 1024px) {
+#home {
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+
+  grid-template-areas: 
+    "header header"
+    "about about"
+    "featured github "
+    "fitimg fitdesc"
+    "comdesc comimg"
+    "contact contact"
+    "footer footer";
+}
+}
+
+@media only screen and (max-width: 768px){
+#home {
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+    "header"
+    "about"
+    "featured"
+    "github"
+    "fitimg"
+    "fitdesc"
+    "comimg"
+    "comdesc"
+    "contact"
+    "footer";
+}
+}
+
+#titlefeatured {
+  grid-area: featured;
+  width: 100vw;
+ 
+  
+}
+
+#github {
+  grid-area: github;
+  width: 100vw;
+  
+}
+#fitnessdesc {
+  grid-area: fitdesc;
+  width: 100vw;
+
+ 
+}
+
+#fitnessimg {
+  grid-area: fitimg;
+  width: 100vw;
+  
+}
+
+#comicdesc {
+  grid-area: comdesc;
+  width: 100vw;
+  
+}
+#comicimg {
+  grid-area: comimg;
+  width: 100vw;
+  
+}
+
+#header {
+  grid-area: header;
+  width: 100vw;
+  
+}
+
+#aboutme {
+  grid-area: about;
+  width: 100vw;
+
+  
+}
+
+#contactme {
+  grid-area: contact;
+  width: 100vw;
+  
+}
+
+#footer {
+  grid-area: footer;
+  width: 100vw;
+ 
+}
 .top {
-  margin-top: -130px;
-  margin-left: 430px; 
+  margin-top: -8rem;
+  margin-left: 27rem; 
 }
 
 .topInverse {
-  margin-top: -250px;
+  margin-top: -16rem;
 }
 
 .topTolbar {
@@ -228,7 +347,7 @@
 
 .first {
   width: 100%;
-  height: 670px;
+  height: 50rem;
   background: linear-gradient(
     to right,
     #111111,
@@ -242,11 +361,11 @@
 
 .second {
   width: 100%;
-  height: 400px;
+  height: 23rem;
   background: #181818;
   text-align: center;
   padding: 2rem 2rem;
-  margin-top: 250px;
+  margin-top: 15rem;
 }
 
 .secondchild1 {
@@ -259,15 +378,15 @@
 
 
 .secondchild1 h1{
-  margin-top: -50px;
-  margin-left: 50px;
-  font-size: 50px;
+  margin-top: -3rem;
+  margin-left: 3rem;
+  font-size: 3rem;
 }
 
 .secondchild1 p {
-  width: 600px;
- margin-left: 50px; 
- margin-top: 50px;
+  width: 50rem;
+ margin-left: 5rem; 
+ margin-top: 5rem;
 }
 
 .secondchild1 a {
@@ -282,8 +401,10 @@
   text-align: left;
   margin-right: 8px;
   width: 40%;
+  height: 100%;
   
 }
+
 
 .bgColor1 {
   background-color: #1e1e1e
@@ -298,13 +419,13 @@
   padding: 2rem 1rem;
   vertical-align: middle;
   margin-right: 5px;
-  width: 240px;
+  width: 15rem;
   
 }
 
 .child2 {
   display: inline-block;
-  width: 245px;
+  width: 20rem;
   vertical-align: middle;
   
 }
@@ -335,28 +456,27 @@ h1.number {
 }
 h5 {
   color:#48E5C2;
-  font-size: 70px;
+  font-size: 5rem;
 }
 
 h1.jobTitle {
-  font-size: 100px;
+  font-size: 5rem;
   white-space: nowrap;
-  margin-left: 170px;
+  margin-left: 12rem;
   color: #F19953
 }
 
 h1.lineTwo {
-  font-size: 300px;
+  font-size: 20rem;
   color: white;
   white-space: nowrap;
-  margin-top: -200px;
+  margin-top: -13rem;
 }
 
 p.tagline {
   text-align: right;
-  margin-right: 65px;
   margin-top: -25px;
-  font-size: 15px;
+  font-size: 1rem;
 }
 
 li {
@@ -366,7 +486,8 @@ li {
 }
 
 ul {
-  margin-right: 250px;
+  margin-right: 25rem;
+  overflow-wrap: break-word;
 }
 
 
